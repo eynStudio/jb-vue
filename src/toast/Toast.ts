@@ -7,14 +7,14 @@ const tpl = require('./Toast.htm')
 @Component({ template: tpl, components: {} })
 class Toast extends Vue {}
 
-const show = (opt: { msg: String; duration?: number }) => {
-  let node = new Toast({ data: opt })
+const show = (msg: String, duration: number = 1000) => {
+  let node = new Toast({ data: { msg, duration } })
   node.$mount()
   document.body.appendChild(node.$el)
 
   setTimeout(() => {
     node.$el.parentNode && node.$el.parentNode.removeChild(node.$el)
-  }, opt.duration || 1000)
+  }, duration)
 }
 
 export const JbToast = {
