@@ -8,7 +8,7 @@ const tpl = require('./Toast.htm')
 class Toast extends Vue {}
 
 const show = (msg: String, duration: number = 1000) => {
-  let node = new Toast({ data: { msg, duration } })
+  let node = new Toast({ data: () => ({ msg, duration }) })
   node.$mount()
   document.body.appendChild(node.$el)
 
